@@ -31,4 +31,5 @@ export class DistribucionesComponent implements OnInit {
     this.tab = num;
   }
 
+
 }
