@@ -1,19 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {DistribucionesService} from "../services/distribuciones.service";
+import {DistribucionesService} from "../../services/distribuciones.service";
 
 
 @Component({
-  selector: 'distribuciones',
-  templateUrl: './distribuciones.component.html',
-  styleUrls: ['./distribuciones.component.scss']
+  selector: 'principal',
+  templateUrl: './principal.component.html',
+  styleUrls: ['./principal.component.scss']
 })
-export class DistribucionesComponent implements OnInit {
+export class PrincipalComponent implements OnInit {
 
   public distribucionesDemanda: any[];
   public distribucionesDemora: any[];
   public costosPorPedido: any[];
 
   public tab = 1;
+  public tabPoliticas = 1;
 
   constructor(private _distribucionesService: DistribucionesService) {
     this.distribucionesDemanda = [];
@@ -29,6 +30,10 @@ export class DistribucionesComponent implements OnInit {
 
   setTab(num: number) {
     this.tab = num;
+  }
+
+  setTabPoliticas(num: number) {
+    this.tabPoliticas = num;
   }
 
 

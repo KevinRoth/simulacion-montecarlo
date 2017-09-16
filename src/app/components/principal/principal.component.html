@@ -1,0 +1,229 @@
+<div id="accordion" role="tablist">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a class="btn btn-block btn-success" data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+           aria-controls="collapseOne">
+          Distribuciones
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+
+        <div class="row">
+
+          <div class="col col-lg-4 col-md-4 btn btn-outline-success" (click)="setTab(1)">
+            Distribucion de la Demanda
+          </div>
+
+          <div class="col col-lg-4 col-md-4 btn btn-outline-success" (click)="setTab(2)">
+            Distribucion de la Demora
+          </div>
+
+          <div class="col col-lg-4 col-md-4 btn btn-outline-success" (click)="setTab(3)">
+            Costo por Docena
+          </div>
+
+        </div>
+
+        <div [ngSwitch]="tab">
+
+          <div *ngSwitchCase="1">
+
+            <table class="table table-hover margin-table">
+              <thead>
+              <tr class="table-success">
+                <th>Cantidad(Decenas)</th>
+                <th>Probabilidad</th>
+                <th>Probabilidad Acumulada</th>
+                <th>Mínimo</th>
+                <th>Máximo</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let demanda of distribucionesDemanda">
+                <td>{{demanda.decenas}}</td>
+                <td>{{demanda.probabilidad}}</td>
+                <td>{{demanda.probabilidadAcumulada}}</td>
+                <td>{{demanda.minimo}}</td>
+                <td>{{demanda.maximo}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div *ngSwitchCase="2">
+
+            <table class="table table-hover margin-table">
+              <thead>
+              <tr class="table-success">
+                <th>Demora</th>
+                <th>Probabilidad</th>
+                <th>Probabilidad Acumulada</th>
+                <th>Mínimo</th>
+                <th>Máximo</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let demora of distribucionesDemora">
+                <td>{{demora.dias}}</td>
+                <td>{{demora.probabilidad}}</td>
+                <td>{{demora.probabilidadAcumulada}}</td>
+                <td>{{demora.minimo}}</td>
+                <td>{{demora.maximo}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div *ngSwitchCase="3">
+
+            <table class="table table-hover margin-table">
+              <thead>
+              <tr class="table-success">
+                <th>Costo</th>
+                <th>Mínimo</th>
+                <th>Máximo</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let costo of costosPorPedido">
+                <td>{{costo.costo}}</td>
+                <td>{{costo.minimo}}</td>
+                <td>{{costo.maximo}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed btn btn-block btn-success" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+           aria-controls="collapseTwo">
+          Simulación de Políticas
+        </a>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col col-lg-4 col-md-4 btn btn-outline-success" (click)="setTabPoliticas(1)">
+            Política A
+          </div>
+
+          <div class="col col-lg-4 col-md-4 btn btn-outline-success" (click)="setTabPoliticas(2)">
+            Política B
+          </div>
+
+          <div class="col col-lg-4 col-md-4 btn btn-outline-success" (click)="setTabPoliticas(3)">
+            Política C
+          </div>
+
+          <div [ngSwitch]="tabPoliticas">
+
+            <div *ngSwitchCase="1">
+
+              <div class="row left-table margin-table ">
+                <div class="col col-lg-4 col-md-4 btn btn-warning btn-block">
+                  <p class="text-center"><strong>Demanda</strong></p>
+                </div>
+                <div class="col col-lg-4 col-md-4 btn btn-warning btn-block top-col">
+                  <p class="text-center"><strong>Costo</strong></p>
+                </div>
+                <div class="col col-lg-4 col-md-4 btn btn-warning btn-block top-col">
+                  <p class="text-center"><strong>Pedido</strong></p>
+                </div>
+              </div>
+
+              <table class="table table-hover margin-table left-table">
+                <thead>
+                <tr class="table-success">
+                  <th>Semana</th>
+                  <th>RND</th>
+                  <th>Demanda</th>
+                  <th>Vendido</th>
+                  <th>Stock Rem</th>
+                  <th>Ganancia</th>
+                  <th>Faltante</th>
+                  <th>Stock</th>
+                  <th>Pedido</th>
+                  <th>Acum Total</th>
+                  <th>Promedio</th>
+                  <th>Cant Dias</th>
+                  <th>RND</th>
+                  <th>Demora</th>
+                  <th>Bandera 1</th>
+                  <th>Bandera 2</th>
+                  <th>Disponible</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let demanda of distribucionesDemanda">
+                  <td>{{demanda.decenas}}</td>
+                  <td>{{demanda.probabilidad}}</td>
+                  <td>{{demanda.probabilidadAcumulada}}</td>
+                  <td>{{demanda.minimo}}</td>
+                  <td>{{demanda.maximo}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div *ngSwitchCase="2">
+
+              <table class="table table-hover margin-table">
+                <thead>
+                <tr class="table-success">
+                  <th>Demora</th>
+                  <th>Probabilidad</th>
+                  <th>Probabilidad Acumulada</th>
+                  <th>Mínimo</th>
+                  <th>Máximo</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let demora of distribucionesDemora">
+                  <td>{{demora.dias}}</td>
+                  <td>{{demora.probabilidad}}</td>
+                  <td>{{demora.probabilidadAcumulada}}</td>
+                  <td>{{demora.minimo}}</td>
+                  <td>{{demora.maximo}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div *ngSwitchCase="3">
+
+              <table class="table table-hover margin-table">
+                <thead>
+                <tr class="table-success">
+                  <th>Costo</th>
+                  <th>Mínimo</th>
+                  <th>Máximo</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let costo of costosPorPedido">
+                  <td>{{costo.costo}}</td>
+                  <td>{{costo.minimo}}</td>
+                  <td>{{costo.maximo}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
