@@ -31,11 +31,61 @@ export class DistribucionesService {
   constructor() {
   }
 
+  private generarAcumuladoDemanda(): void {
+    let acumulador: number = 0;
+
+    for (let distribucion of DISTRIBUCIONDEMANDAENDECENAS) {
+      acumulador += distribucion.probabilidad;
+      distribucion.probabilidadAcumulada = acumulador;
+
+    }
+  }
+
+  private generarAcumuladoDemora(): void {
+    let acumulador: number = 0;
+
+    for (let distribucion of DISTRIBUCIONDEMORA) {
+      acumulador += distribucion.probabilidad;
+      distribucion.probabilidadAcumulada = acumulador;
+
+    }
+  }
+
+  private generarRangosDemanda(): void {
+    let minimo: number = 0;
+    let maximo: number = 0;
+
+    for (let distribucion of DISTRIBUCIONDEMANDAENDECENAS) {
+      distribucion.minimo = minimo;
+      distribucion.maximo = distribucion.probabilidadAcumulada - 0.0001;
+      minimo = distribucion.probabilidadAcumulada;
+    }
+  }
+
+  private generarRangosDemora(): void {
+    let minimo: number = 0;
+    let maximo: number = 0;
+
+    for (let distribucion of DISTRIBUCIONDEMORA) {
+      distribucion.minimo = minimo;
+      distribucion.maximo = distribucion.probabilidadAcumulada - 0.0001;
+      minimo = distribucion.probabilidadAcumulada;
+    }
+  }
+
   public obtenerDistribucionDemanda() {
+
+    this.generarAcumuladoDemanda();
+
+    this.generarRangosDemanda();
+
     return DISTRIBUCIONDEMANDAENDECENAS;
   }
 
   public obtenerDistribucionDemora() {
+    this.generarAcumuladoDemora();
+    this.generarRangosDemora();
+
     return DISTRIBUCIONDEMORA;
   }
 

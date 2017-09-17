@@ -6,6 +6,7 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {PrincipalComponent} from './components/principal/principal.component';
 import {DistribucionesService} from './services/distribuciones.service';
+import {PoliticasService} from "./services/politicas.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {DistribucionesService} from './services/distribuciones.service';
     HttpModule
   ],
   providers: [
-    DistribucionesService
+    DistribucionesService,
+    PoliticasService
   ],
   bootstrap: [AppComponent]
 })
