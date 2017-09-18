@@ -38,7 +38,7 @@ export class PrincipalComponent implements OnInit {
 
     //this.simulacionesPoliticaA = new Politica[120];
 
-    //this.simulacionesPoliticaA = this._politicasService.generarSimulacion(1//, this.distribucionesDemanda, this.distribucionesDemora);
+    this.simulacionesPoliticaA = this._politicasService.generarSimulacion(1, this.distribucionesDemanda, this.distribucionesDemora);
   }
 
   setTab(num: number) {
