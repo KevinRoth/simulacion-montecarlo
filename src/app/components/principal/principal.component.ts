@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DistribucionesService} from "../../services/distribuciones.service";
-import {Politica} from "../../models/politica.model";
-import {PoliticasService} from "../../services/politicas.service";
+import {DistribucionesService} from '../../services/distribuciones.service';
+import {Politica} from '../../models/politica.model';
+import {PoliticasService} from '../../services/politicas.service';
 
 
 @Component({
@@ -34,9 +34,11 @@ export class PrincipalComponent implements OnInit {
   ngOnInit() {
     this.distribucionesDemanda = this._distribucionesService.obtenerDistribucionDemanda();
     this.distribucionesDemora = this._distribucionesService.obtenerDistribucionDemora();
-    this.costosPorPedido = this._distribucionesService.obtenerCostoPorPedido();
+    this.costosPorPedido = this._politicasService.getCostoPedido();
 
-   // this._politicasService.generarSimulacion(120,this.distribucionesDemanda,this.distribucionesDemora);
+    //this.simulacionesPoliticaA = new Politica[120];
+
+    //this.simulacionesPoliticaA = this._politicasService.generarSimulacion(1//, this.distribucionesDemanda, this.distribucionesDemora);
   }
 
   setTab(num: number) {
@@ -46,7 +48,6 @@ export class PrincipalComponent implements OnInit {
   setTabPoliticas(num: number) {
     this.tabPoliticas = num;
   }
-
 
 
 }

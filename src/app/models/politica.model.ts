@@ -1,4 +1,5 @@
 export class Politica {
+  public politicaId: number;
   public randomDemanda: number;
   public demanda: number;
   public vendido: number;
@@ -7,12 +8,16 @@ export class Politica {
   public costoFaltante: number;
   public costoAlmacenamientoStock: number;
   public costoPedido: number;
+  public costoTotal: number;
+  public costoPromedio: number;
   public contadorDiasSemana: number;
   public randomDemora: number;
   public demora: number;
   public disponible: number;
+  public cantidadDias: number;
 
-  constructor(randomDemanda?: number,
+  constructor(politicaId?: number,
+              randomDemanda?: number,
               demanda?: number,
               vendido?: number,
               stock?: number,
@@ -20,11 +25,15 @@ export class Politica {
               costoFaltante?: number,
               costoAlmacenamientoStock?: number,
               costoPedido?: number,
+              costoTotal?: number,
+              costoPromedio?: number,
               contadorDiasSemanda?: number,
               randomDemora?: number,
               demora?: number,
-              disponible?: number) {
+              disponible?: number,
+              cantidadDias?: number) {
 
+    this.politicaId = politicaId;
     this.randomDemanda = randomDemanda;
     this.demanda = demanda;
     this.vendido = vendido;
@@ -33,9 +42,12 @@ export class Politica {
     this.costoFaltante = costoFaltante;
     this.costoAlmacenamientoStock = costoAlmacenamientoStock;
     this.costoPedido = costoPedido;
+    this.costoTotal = costoTotal;
+    this.costoPromedio = costoPromedio;
     this.contadorDiasSemana = contadorDiasSemanda;
     this.randomDemora = randomDemora;
     this.demora = demora;
     this.disponible = disponible;
+    this.cantidadDias = cantidadDias;
   }
 }

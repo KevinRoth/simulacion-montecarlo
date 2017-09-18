@@ -19,12 +19,6 @@ const DISTRIBUCIONDEMORA = [
   {dias: 9, probabilidad: 0.001, probabilidadAcumulada: 0, minimo: 0, maximo: 0},
 ];
 
-const COSTOXPEDIDOENDECENAS = [
-  {costo: -20, minimo: 0, maximo: 20},
-  {costo: -25, minimo: 21, maximo: 40},
-  {costo: -30, minimo: 41, maximo: 100000},
-];
-
 @Injectable()
 export class DistribucionesService {
 
@@ -41,15 +35,15 @@ export class DistribucionesService {
     }
   }
 
-  private generarAcumuladoDemora(): void {
-    let acumulador: number = 0;
+    private generarAcumuladoDemora(): void {
+      let acumulador: number = 0;
 
-    for (let distribucion of DISTRIBUCIONDEMORA) {
-      acumulador += distribucion.probabilidad;
-      distribucion.probabilidadAcumulada = acumulador;
+      for (let distribucion of DISTRIBUCIONDEMORA) {
+        acumulador += distribucion.probabilidad;
+        distribucion.probabilidadAcumulada = acumulador;
 
+      }
     }
-  }
 
   private generarRangosDemanda(): void {
     let minimo: number = 0;
@@ -88,10 +82,5 @@ export class DistribucionesService {
 
     return DISTRIBUCIONDEMORA;
   }
-
-  public obtenerCostoPorPedido() {
-    return COSTOXPEDIDOENDECENAS;
-  }
-
 
 }

@@ -166,12 +166,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let demanda of distribucionesDemanda">
-                  <td>{{demanda.decenas}}</td>
-                  <td>{{demanda.probabilidad}}</td>
-                  <td>{{demanda.probabilidadAcumulada}}</td>
-                  <td>{{demanda.minimo}}</td>
-                  <td>{{demanda.maximo}}</td>
+                <tr *ngFor="let politica of simulacionesPoliticaA; let indice = index">
+                  <td>{{indice}}</td>
+                  <td>{{politica.randomDemanda}}</td>
+                  <td>{{politica.demanda}}</td>
+                  <td>{{politica.vendido}}</td>
+                  <td>{{politica.stock}}</td>
+                  <td>{{politica.ganancia}}</td>
+                  <td>{{politica.costoFaltante}}</td>
+                  <td>{{politica.costoAlmacenamientoStock}}</td>
+                  <td>{{politica.costoPedido}}</td>
+                  <td>{{politica.costoPedido + politica.costoAlmacenamientoStock + politica.costoFaltante}}</td>
+                  <td>{{a}}</td>
+                  <td>{{a}}</td>
+                  <td>{{a}}</td>
+                  <td>{{a}}</td>
+                  <td>{{a}}</td>
+                  <td>{{a}}</td>
+                  <td>{{a}}</td>
+
+
                 </tr>
                 </tbody>
               </table>
